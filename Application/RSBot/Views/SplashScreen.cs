@@ -72,26 +72,30 @@ public partial class SplashScreen : UIWindowBase
                 GlobalConfig.Set("RSBot.SilkroadDirectory", silkroadDirectory);
                 GlobalConfig.Set("RSBot.SilkroadExecutable", Path.GetFileName(dialog.FileName));
 
-                var title = LanguageManager.GetLang("ClientTypeInputDialogTitle");
-                var content = LanguageManager.GetLang("ClientTypeInputDialogContent");
-
-                var clientTypeDialog = new InputDialog(title, title, content, InputDialog.InputType.Combobox);
-                clientTypeDialog.ShowInTaskbar = true;
-                clientTypeDialog.StartPosition = FormStartPosition.CenterScreen;
-                clientTypeDialog.Selector.Items.AddRange(Enum.GetNames(typeof(GameClientType)));
-                clientTypeDialog.Selector.SelectedIndex = 2;
-                clientTypeDialog.TopMost = true;
-                clientTypeDialog.StartPosition = FormStartPosition.CenterScreen;
-
-                if (clientTypeDialog.ShowDialog() == DialogResult.OK)
+                // Silkroad TR: istemci türü paketteki User/Default.rs'te hazır (Vietnam = vSRO 1.188); yeniden sorulmaz
+                if (!GlobalConfig.Exists("RSBot.Game.ClientType"))
                 {
-                    if (Enum.TryParse<GameClientType>(clientTypeDialog.Value.ToString(), out var clientType))
-                        GlobalConfig.Set("RSBot.Game.ClientType", clientType);
-                }
-                else
-                {
-                    MessageBox.Show(LanguageManager.GetLang("ClientTypeNotSelected"));
-                    GlobalConfig.Set("RSBot.Game.ClientType", GameClientType.Vietnam);
+                    var title = LanguageManager.GetLang("ClientTypeInputDialogTitle");
+                    var content = LanguageManager.GetLang("ClientTypeInputDialogContent");
+
+                    var clientTypeDialog = new InputDialog(title, title, content, InputDialog.InputType.Combobox);
+                    clientTypeDialog.ShowInTaskbar = true;
+                    clientTypeDialog.StartPosition = FormStartPosition.CenterScreen;
+                    clientTypeDialog.Selector.Items.AddRange(Enum.GetNames(typeof(GameClientType)));
+                    clientTypeDialog.Selector.SelectedIndex = 2;
+                    clientTypeDialog.TopMost = true;
+                    clientTypeDialog.StartPosition = FormStartPosition.CenterScreen;
+
+                    if (clientTypeDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        if (Enum.TryParse<GameClientType>(clientTypeDialog.Value.ToString(), out var clientType))
+                            GlobalConfig.Set("RSBot.Game.ClientType", clientType);
+                    }
+                    else
+                    {
+                        MessageBox.Show(LanguageManager.GetLang("ClientTypeNotSelected"));
+                        GlobalConfig.Set("RSBot.Game.ClientType", GameClientType.Vietnam);
+                    }
                 }
             }
             else
