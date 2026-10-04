@@ -1,3 +1,12 @@
+# Silkroad TR Bot
+
+Bu depo, açık kaynak [RSBot](https://github.com/myildirimofficial/RSBot)'un Silkroad TR sunucusu için uyarlanmış
+kopyasıdır (AGPL-3.0; lisans ve telif bilgileri aynen korunur). Uyarlama yalnız varsayılan ayarları içerir: Türkçe arayüz
+ve vSRO 1.188 ("Vietnam") istemci türü (`SilkroadTR/Default.rs`), ve derlemeyi `.github/workflows/build-silkroad-tr.yml`
+yapar. Kullanım rehberi ve indirme: Silkroad TR sitesi. Hatalar ve geliştirmeler için asıl projeye bakınız.
+
+---
+
 # RSBot
 
 [![GitHub Issues](https://img.shields.io/github/issues/myildirimofficial/rsbot?label=Open%20Issues)](https://github.com/sdclowen/rsbot/issues)

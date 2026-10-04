@@ -1,0 +1,49 @@
+# Silkroad TR derlemesi: RSBot'u Release/x86 derler, Silkroad TR varsayılan ayarlarını (Türkçe arayüz, vSRO 1.188
+# "Vietnam" istemci türü) User/Default.rs olarak ekler ve "SilkroadTR-Bot" adlı yapıt olarak yükler. Sunucunun sitesindeki
+# indirme dosyası (SilkroadTR-Bot.zip) bu yapıttan üretilir (silkroad-tr deposunda deploy/deploy-bot.sh).
+name: Silkroad TR derlemesi
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: dotnet restore RSBot.sln
+
+      - name: Build
+        run: msbuild /p:Configuration=Release /p:Platform=x86 /m RSBot.sln
+
+      - name: Silkroad TR ayarları
+        shell: pwsh
+        run: |
+          # kullanıcı verisi (oturum, günlük) pakete girmesin; yalnız varsayılan profil
+          Remove-Item -Recurse -Force Build/User -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory Build/User | Out-Null
+          Copy-Item SilkroadTR/Default.rs Build/User/Default.rs
+          Get-ChildItem Build -Recurse -Include *.pdb | Remove-Item -Force
+          if (-not (Test-Path Build/RSBot.exe)) { throw "RSBot.exe derlenmedi" }
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SilkroadTR-Bot
+          path: Build/
+          retention-days: 90
