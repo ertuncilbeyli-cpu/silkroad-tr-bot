@@ -228,7 +228,7 @@
             // btnMoveAttackSkillDown
             // 
             btnMoveAttackSkillDown.Color = System.Drawing.Color.Transparent;
-            btnMoveAttackSkillDown.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnMoveAttackSkillDown.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnMoveAttackSkillDown.Location = new System.Drawing.Point(409, 106);
             btnMoveAttackSkillDown.Margin = new System.Windows.Forms.Padding(4);
             btnMoveAttackSkillDown.Name = "btnMoveAttackSkillDown";
@@ -243,7 +243,7 @@
             // btnMoveAttackSkillUp
             // 
             btnMoveAttackSkillUp.Color = System.Drawing.Color.Transparent;
-            btnMoveAttackSkillUp.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnMoveAttackSkillUp.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnMoveAttackSkillUp.Location = new System.Drawing.Point(409, 69);
             btnMoveAttackSkillUp.Margin = new System.Windows.Forms.Padding(4);
             btnMoveAttackSkillUp.Name = "btnMoveAttackSkillUp";
@@ -258,7 +258,7 @@
             // btnRemoveAttackSkill
             // 
             btnRemoveAttackSkill.Color = System.Drawing.Color.Transparent;
-            btnRemoveAttackSkill.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnRemoveAttackSkill.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnRemoveAttackSkill.Location = new System.Drawing.Point(409, 31);
             btnRemoveAttackSkill.Margin = new System.Windows.Forms.Padding(4);
             btnRemoveAttackSkill.Name = "btnRemoveAttackSkill";
@@ -317,7 +317,7 @@
             // btnMoveBuffSkillDown
             // 
             btnMoveBuffSkillDown.Color = System.Drawing.Color.Transparent;
-            btnMoveBuffSkillDown.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnMoveBuffSkillDown.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnMoveBuffSkillDown.Location = new System.Drawing.Point(409, 109);
             btnMoveBuffSkillDown.Margin = new System.Windows.Forms.Padding(4);
             btnMoveBuffSkillDown.Name = "btnMoveBuffSkillDown";
@@ -349,7 +349,7 @@
             // btnMoveBuffSkillUp
             // 
             btnMoveBuffSkillUp.Color = System.Drawing.Color.Transparent;
-            btnMoveBuffSkillUp.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnMoveBuffSkillUp.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnMoveBuffSkillUp.Location = new System.Drawing.Point(409, 71);
             btnMoveBuffSkillUp.Margin = new System.Windows.Forms.Padding(4);
             btnMoveBuffSkillUp.Name = "btnMoveBuffSkillUp";
@@ -382,7 +382,7 @@
             // btnRemoveBuffSkill
             // 
             btnRemoveBuffSkill.Color = System.Drawing.Color.Transparent;
-            btnRemoveBuffSkill.Font = new System.Drawing.Font("Webdings", 9.75F);
+            btnRemoveBuffSkill.Font = new System.Drawing.Font("Marlett", 9.75F);
             btnRemoveBuffSkill.Location = new System.Drawing.Point(409, 34);
             btnRemoveBuffSkill.Margin = new System.Windows.Forms.Padding(4);
             btnRemoveBuffSkill.Name = "btnRemoveBuffSkill";

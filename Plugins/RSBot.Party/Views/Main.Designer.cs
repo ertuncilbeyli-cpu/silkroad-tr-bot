@@ -1171,7 +1171,7 @@
             // buttonAutoJoinConfig
             // 
             buttonAutoJoinConfig.Color = System.Drawing.Color.Transparent;
-            buttonAutoJoinConfig.Font = new System.Drawing.Font("Webdings", 9F);
+            buttonAutoJoinConfig.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonAutoJoinConfig.Location = new System.Drawing.Point(881, 15);
             buttonAutoJoinConfig.Margin = new System.Windows.Forms.Padding(4);
             buttonAutoJoinConfig.Name = "buttonAutoJoinConfig";
@@ -1179,7 +1179,7 @@
             buttonAutoJoinConfig.ShadowDepth = 4F;
             buttonAutoJoinConfig.Size = new System.Drawing.Size(31, 29);
             buttonAutoJoinConfig.TabIndex = 13;
-            buttonAutoJoinConfig.Text = "@";
+            buttonAutoJoinConfig.Text = "...";
             buttonAutoJoinConfig.UseVisualStyleBackColor = true;
             buttonAutoJoinConfig.Click += buttonAutoJoinConfig_Click;
             // 
@@ -1539,7 +1539,7 @@
             // 
             buttonAddCharToBuffing.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             buttonAddCharToBuffing.Color = System.Drawing.Color.Green;
-            buttonAddCharToBuffing.Font = new System.Drawing.Font("Webdings", 9.75F);
+            buttonAddCharToBuffing.Font = new System.Drawing.Font("Marlett", 9.75F);
             buttonAddCharToBuffing.ForeColor = System.Drawing.Color.White;
             buttonAddCharToBuffing.Location = new System.Drawing.Point(193, 216);
             buttonAddCharToBuffing.Margin = new System.Windows.Forms.Padding(4);
@@ -1570,7 +1570,7 @@
             // 
             buttonRemoveCharFromBuffing.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             buttonRemoveCharFromBuffing.Color = System.Drawing.Color.IndianRed;
-            buttonRemoveCharFromBuffing.Font = new System.Drawing.Font("Webdings", 9.75F);
+            buttonRemoveCharFromBuffing.Font = new System.Drawing.Font("Marlett", 9.75F);
             buttonRemoveCharFromBuffing.ForeColor = System.Drawing.Color.White;
             buttonRemoveCharFromBuffing.Location = new System.Drawing.Point(230, 216);
             buttonRemoveCharFromBuffing.Margin = new System.Windows.Forms.Padding(4);

@@ -11,6 +11,13 @@ Asıl projeye göre değişiklikler (Ekim 2026; kodda `Silkroad TR:` notuyla iş
   kutusunun pencere tanıtıcısını o iş parçacığında oluşturup arayüzü kilitliyordu (`Plugins/RSBot.Log/Views/Main.cs`).
 - Açılıştaki güncelleme denetimi kapalı: güncellemeler sunucunun sitesinden dağıtılır (`Application/RSBot/Views/Main.cs`).
 - Türkçe dil dosyalarında eksik ve yarım kalan çeviriler (`Build/Data/Languages/*/tr_TR.rsl`).
+- Wine (Mac) düzeltmeleri, Windows'ta davranış aynı kalır:
+  - Wine'da varsayılan yazı tipi Segoe UI 9. Sistemin ileti yazı tipi Tahoma 8,25 olduğundan yazı tipine göre ölçeklenen
+    pencereler küçülüyor, yazılar kesiliyordu (`Application/RSBot/Program.cs`).
+  - Beceri ve parti listelerindeki ok, çarpı ve onay düğmeleri Webdings yerine Marlett ile çizilir (Wine'ın Webdings'inde
+    bu işaretler yok). Parti eklentisindeki ayar düğmesi "..." oldu.
+  - SDUI'nin liste denetimi Wine'da arka planını kendisi boyar; yoksa boş alanda önceki sekmenin görüntüsü kalıyordu.
+    SDUI alt modülü değiştirilmez: `SilkroadTR/sdui-wine.patch` derlemede uygulanır.
 - Derleme: `.github/workflows/build-silkroad-tr.yml`.
 
 ---

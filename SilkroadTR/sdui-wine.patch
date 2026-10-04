@@ -1,0 +1,44 @@
+diff --git a/SDUI/Controls/ListView.cs b/SDUI/Controls/ListView.cs
+index 2e48fd2..003b604 100644
+--- a/SDUI/Controls/ListView.cs
++++ b/SDUI/Controls/ListView.cs
+@@ -317,6 +317,11 @@ public class ListView : System.Windows.Forms.ListView
+         switch (m.Msg)
+         {
+             case 0x0014: // WM_ERASEBKGND
++                // Silkroad TR: Wine'ın ListView'i arka planını yalnız bu iletide boyar; yutulursa listenin boş
++                // kısmında önceki sekmenin görüntüsü kalıyor
++                if (WindowsHelper.IsWine)
++                    break;
++
+                 // Prevent flicker - return 1 to indicate handled
+                 m.Result = (IntPtr)1;
+                 return;
+diff --git a/SDUI/Helpers/WindowsHelper.cs b/SDUI/Helpers/WindowsHelper.cs
+index d88d72c..d02a671 100644
+--- a/SDUI/Helpers/WindowsHelper.cs
++++ b/SDUI/Helpers/WindowsHelper.cs
+@@ -101,6 +101,23 @@ public static class WindowsHelper
+     /// </value>
+     public static bool VisualStylesEnabled { get; private set; }
+ 
++    /// <summary>
++    /// Silkroad TR: Wine altında (Mac/Linux) mı çalışıyor; ntdll'in wine_get_version işlevi yalnız Wine'da var
++    /// </summary>
++    public static readonly bool IsWine = DetectWine();
++
++    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
++    private static extern IntPtr GetModuleHandle(string moduleName);
++
++    [DllImport("kernel32.dll", CharSet = CharSet.Ansi, BestFitMapping = false)]
++    private static extern IntPtr GetProcAddress(IntPtr module, string procName);
++
++    private static bool DetectWine()
++    {
++        var ntdll = GetModuleHandle("ntdll.dll");
++        return ntdll != IntPtr.Zero && GetProcAddress(ntdll, "wine_get_version") != IntPtr.Zero;
++    }
++
+     /// <summary>
+     /// Is the dark theme activated in the operating system <c>true</c>; otherwise <c>false</c>
+     /// </summary>

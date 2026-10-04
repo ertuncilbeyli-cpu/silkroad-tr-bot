@@ -17,6 +17,10 @@ jobs:
         with:
           submodules: recursive
 
+      # SDUI alt modülü çatallanmadan değiştirilir: Wine düzeltmesi derlemeden önce yama olarak uygulanır
+      - name: SDUI Wine yamasi
+        run: git -C SDUI apply --ignore-whitespace ../SilkroadTR/sdui-wine.patch
+
       - name: Install .NET
         uses: actions/setup-dotnet@v4
         with:

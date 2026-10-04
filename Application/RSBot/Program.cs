@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using CommandLine;
@@ -89,6 +91,12 @@ internal static class Program
         Application.SetCompatibleTextRenderingDefault(false);
         Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
 
+        // Silkroad TR: Wine'da (Mac) sistemin ileti yazı tipi Tahoma 8,25 olduğundan yazı tipine göre ölçeklenen
+        // pencereler (AutoScaleMode.Font) Windows'takinden (Segoe UI 9) çok küçülüyor, DPI'ya göre ölçeklenen iç
+        // denetimler bunlara sığmıyor ve yazılar kesiliyordu. Wine'da da Windows'un varsayılanı kullanılır.
+        if (IsWine())
+            Application.SetDefaultFont(new Font("Segoe UI", 9f));
+
         using Main mainForm = new Main();
         using SplashScreen splashScreen = new(mainForm);
 
@@ -96,6 +104,21 @@ internal static class Program
 
         splashScreen.Dispose();
         Application.Run(mainForm);
+    }
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    private static extern IntPtr GetModuleHandle(string moduleName);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Ansi, BestFitMapping = false)]
+    private static extern IntPtr GetProcAddress(IntPtr module, string procName);
+
+    /// <summary>
+    ///     Silkroad TR: Wine altında mı çalışıyor (ntdll'in wine_get_version işlevi yalnız Wine'da var)
+    /// </summary>
+    private static bool IsWine()
+    {
+        var ntdll = GetModuleHandle("ntdll.dll");
+        return ntdll != IntPtr.Zero && GetProcAddress(ntdll, "wine_get_version") != IntPtr.Zero;
     }
 
     private static void RunOptions(CommandLineOptions options)
