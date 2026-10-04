@@ -1,9 +1,17 @@
 # Silkroad TR Bot
 
 Bu depo, açık kaynak [RSBot](https://github.com/myildirimofficial/RSBot)'un Silkroad TR sunucusu için uyarlanmış
-kopyasıdır (AGPL-3.0; lisans ve telif bilgileri aynen korunur). Uyarlama yalnız varsayılan ayarları içerir: Türkçe arayüz
-ve vSRO 1.188 ("Vietnam") istemci türü (`SilkroadTR/Default.rs`), ve derlemeyi `.github/workflows/build-silkroad-tr.yml`
-yapar. Kullanım rehberi ve indirme: Silkroad TR sitesi. Hatalar ve geliştirmeler için asıl projeye bakınız.
+kopyasıdır (AGPL-3.0; lisans ve telif bilgileri aynen korunur). Kullanım rehberi ve indirme: Silkroad TR sitesi. Hatalar
+ve geliştirmeler için asıl projeye bakınız.
+
+Asıl projeye göre değişiklikler (Ekim 2026; kodda `Silkroad TR:` notuyla işaretli):
+- Varsayılan ayarlar (`SilkroadTR/Default.rs`): Türkçe arayüz, vSRO 1.188 ("Vietnam") istemci türü, otomatik giriş ve
+  otomatik karakter seçimi açık. İstemci türü ayarda hazırsa ilk açılışta yeniden sorulmaz (`SplashScreen.cs`).
+- Açılışta kilitlenme düzeltmesi: oyun verisi yüklenirken arka plan iş parçacığından gelen ilk günlük satırı, günlük
+  kutusunun pencere tanıtıcısını o iş parçacığında oluşturup arayüzü kilitliyordu (`Plugins/RSBot.Log/Views/Main.cs`).
+- Açılıştaki güncelleme denetimi kapalı: güncellemeler sunucunun sitesinden dağıtılır (`Application/RSBot/Views/Main.cs`).
+- Türkçe dil dosyalarında eksik ve yarım kalan çeviriler (`Build/Data/Languages/*/tr_TR.rsl`).
+- Derleme: `.github/workflows/build-silkroad-tr.yml`.
 
 ---
 

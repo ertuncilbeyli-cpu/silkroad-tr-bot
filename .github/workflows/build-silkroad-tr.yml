@@ -1,5 +1,5 @@
 # Silkroad TR derlemesi: RSBot'u Release/x86 derler, Silkroad TR varsayılan ayarlarını (Türkçe arayüz, vSRO 1.188
-# "Vietnam" istemci türü) User/Default.rs olarak ekler ve "SilkroadTR-Bot" adlı yapıt olarak yükler. Sunucunun sitesindeki
+# "Vietnam" istemci türü, otomatik giriş) User/Default.rs olarak ekler ve "SilkroadTR-Bot" adlı yapıt olarak yükler. Sunucunun sitesindeki
 # indirme dosyası (SilkroadTR-Bot.zip) bu yapıttan üretilir (silkroad-tr deposunda deploy/deploy-bot.sh).
 name: Silkroad TR derlemesi
 
