@@ -38,6 +38,9 @@ jobs:
           Remove-Item -Recurse -Force Build/User -ErrorAction SilentlyContinue
           New-Item -ItemType Directory Build/User | Out-Null
           Copy-Item SilkroadTR/Default.rs Build/User/Default.rs
+          # AGPL-3.0: lisans metni pakette dursun
+          Copy-Item LICENSE Build/LICENSE.txt
+          Remove-Item -Force Build/*.exp, Build/*.lib -ErrorAction SilentlyContinue
           Get-ChildItem Build -Recurse -Include *.pdb | Remove-Item -Force
           if (-not (Test-Path Build/RSBot.exe)) { throw "RSBot.exe derlenmedi" }
 
