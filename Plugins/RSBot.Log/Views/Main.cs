@@ -61,7 +61,36 @@ public partial class Main : DoubleBufferedControl
         if (level == LogLevel.Warning && !checkWarning.Checked)
             return;
 
+        if (WriteOnUIThread(message, level))
+            return;
+
         txtLog.Write($"<{level}> \t{message}", true, Kernel.Debug, logFile);
+    }
+
+    /// <summary>
+    ///     Silkroad TR: kutunun pencere tanıtıcısı (handle) henüz yoksa ve arka plan iş parçacığındaysak yazmayı açık bir
+    ///     pencere üzerinden arayüz iş parçacığına aktarır. Aktarmazsa tanıtıcı bu iş parçacığında oluşur (InvokeRequired
+    ///     tanıtıcı yokken false döner) ve arayüz iş parçacığının sonraki yazmaları Invoke'ta sonsuza dek bekler: oyun
+    ///     verisi yüklenirken gelen günlükle bot açılış ekranında kilitleniyordu (Wine'da her açılışta).
+    /// </summary>
+    private bool WriteOnUIThread(string message, LogLevel level)
+    {
+        if (txtLog.IsHandleCreated)
+            return false;
+
+        try
+        {
+            var ui = Application.OpenForms.Count > 0 ? Application.OpenForms[0] : null;
+            if (ui == null || !ui.IsHandleCreated || !ui.InvokeRequired)
+                return false;
+
+            ui.BeginInvoke(new Action(() => AppendLog(message, level)));
+            return true;
+        }
+        catch (InvalidOperationException)
+        {
+            return false; // pencere o arada kapandıysa eskisi gibi doğrudan yaz
+        }
     }
 
     /// <summary>
