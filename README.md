@@ -1,7 +1,7 @@
-# Silkroad TR Bot
+# Aden SRO TR Bot
 
-Bu depo, açık kaynak [RSBot](https://github.com/myildirimofficial/RSBot)'un Silkroad TR sunucusu için uyarlanmış
-kopyasıdır (AGPL-3.0; lisans ve telif bilgileri aynen korunur). Kullanım rehberi ve indirme: Silkroad TR sitesi. Hatalar
+Bu depo, açık kaynak [RSBot](https://github.com/myildirimofficial/RSBot)'un Aden SRO TR sunucusu (eski adıyla Silkroad TR) için
+uyarlanmış kopyasıdır (AGPL-3.0; lisans ve telif bilgileri aynen korunur). Kullanım rehberi ve indirme: Aden SRO TR sitesi. Hatalar
 ve geliştirmeler için asıl projeye bakınız.
 
 Asıl projeye göre değişiklikler (Ekim 2026; kodda `Silkroad TR:` notuyla işaretli):
